@@ -227,7 +227,7 @@ SKILLS = {
         "actions": [
     {"level": 1, "action": "Nature Rune", "exp": 60,"image":"Nature_rune_detail.png"},
     {"level": 50, "action": "Blood Rune", "exp": 85,"image":"Blood_rune_detail.png"},
-    {"level": 75, "action": "Cosmic Rune", "exp": 120,"imag"Cosmic_rune_detail.png"}
+    {"level": 75, "action": "Cosmic Rune", "exp": 120,"image":"Cosmic_rune_detail.png"}
 ]
     },
     "slayer": {
@@ -241,4 +241,5 @@ SKILLS = {
         "icon": "Farming_icon.png",
     }
 }
+
 
