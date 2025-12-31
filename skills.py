@@ -35,7 +35,7 @@ SKILLS = {
         "enabled": True,
         "icon": "Agility_icon.png",
         "actions": [
-    {"level": 1, "action": "Agility ticket", "exp": 700"image":"Agility_arena_ticket_detail.png"},
+    {"level": 1, "action": "Agility ticket", "exp": 700,"image":"Agility_arena_ticket_detail.png"},
     {"level": 1, "action": "Gnome Course", "exp": 1980,"image":"Gnomeball_detail.png"},
     {"level": 40, "action": "Barbarian Course", "exp": 3100,"image":"Steel_battleaxe_detail.png"},
     {"level": 60, "action": "Werewolf Course", "exp": 3780,"image":"Stick_(item)_detail.png"},
@@ -241,6 +241,7 @@ SKILLS = {
         "icon": "Farming_icon.png",
     }
 }
+
 
 
 
