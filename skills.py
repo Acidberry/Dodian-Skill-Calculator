@@ -80,8 +80,8 @@ SKILLS = {
     {"level": 55, "action": "Super Strength Potion", "exp": 1000,"image":"Super_strength(4)_detail.png"},
     {"level": 60, "action": "Super Restore Potion", "exp": 1120,"image""Super_restore(4)_detail.png"},
     {"level": 65, "action": "Super Defence potion", "exp": 1200,"image":"Super_defence(4)_detail.png"},
-    {"level": 75, "action": "Ranging Potion", "exp": 1350,"image""Ranging_potion(4)_detail.png"},
-    {"level": 88, "action": "Super Combat Potion", "exp": 600,"image""Super_combat_potion(4)_detail.png"}
+    {"level": 75, "action": "Ranging Potion", "exp": 1350,"image":"Ranging_potion(4)_detail.png"},
+    {"level": 88, "action": "Super Combat Potion", "exp": 600,"image":"Super_combat_potion(4)_detail.png"}
 ]
     },
     "fishing": {
@@ -241,6 +241,7 @@ SKILLS = {
         "icon": "Farming_icon.png",
     }
 }
+
 
 
 
