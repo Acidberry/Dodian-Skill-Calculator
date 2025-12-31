@@ -18,7 +18,7 @@ SKILLS = {
     {"level": 1, "action": "Copper ore", "exp": 110,"image":"Copper_ore_detail.png"},
     {"level": 1, "action": "Tin ore", "exp": 110,"image":"Tin_ore_detail.png"},
     {"level": 15, "action": "Iron ore", "exp": 280,"image":"Iron_ore_detail.png"},
-    {"level": 30, "action": "Coal", "exp": 420,"image""Coal_detail.png"},
+    {"level": 30, "action": "Coal", "exp": 420,"image":"Coal_detail.png"},
     {"level": 40, "action": "Gold ore", "exp": 510,"image":"Gold_ore_detail.png"},
     {"level": 55, "action": "Mithril", "exp": 620,"image":"Mithril_ore_detail.png"},
     {"level": 70, "action": "Adamantite ore", "exp":780,"image":"Adamantite_ore_detail.png"},
@@ -241,5 +241,6 @@ SKILLS = {
         "icon": "Farming_icon.png",
     }
 }
+
 
 
