@@ -8,27 +8,52 @@ app = Flask(__name__)
 def index():
     # Tu musíme poslať 'skills' (množné číslo), lebo index.html to tak vyžaduje
     return render_template("index.html", skills=SKILLS)
+
 @app.route("/skill/<skill_name>", methods=["GET", "POST"])
 def skill_detail(skill_name):
-    # Skontrolujeme, či skill existuje v našom zozname
-    if skill_name not in SKILLS:
-        return "Skill not found", 404
-        
     skill_data = SKILLS[skill_name]
     result = None
+    zipped_actions = None
 
     if request.method == "POST":
         try:
-            current_xp = int(request.form.get("current_xp", 0))
-            target_level = int(request.form.get("target_level", 1))
-            # Výpočet cez tvoju logic.py
-            xp_needed = logic.calculate_xp_needed(current_xp, target_level)
-            result = {"xp_needed": xp_needed}
-        except ValueError:
-            result = {"error": "Zadaj platné čísla!"}
+            current_level = request.form.get("current_level", "")
+            target_level = request.form.get("target_level", "")
+            current_xp = request.form.get("current_xp", "")
+            target_xp = request.form.get("target_xp", "")
+            active_pair = request.form.get("active_pair")
 
-    # Tu posielame 'skill' (dáta o jednom skille) a 'skill_key' (názov skillu)
-    return render_template("skill.html", skill=skill_data, skill_key=skill_name, result=result)
+            if active_pair == '1':
+                current_level = int(current_level)
+                target_level = int(target_level)
+
+                # do calculations here
+                result = logic.calculate(
+                    active_pair,
+                    skill_data,
+                    current_level,
+                    current_xp,
+                    target_level,
+                    target_xp
+                )
+                zipped_actions = list(zip(skill_data['actions'], result['resultActions']))
+            elif active_pair == '2':
+                current_xp = int(current_xp)
+                target_xp = int(target_xp)
+                # do calculations here
+                result = logic.calculate(
+                    active_pair,
+                    skill_data,
+                    current_level,
+                    current_xp,
+                    target_level,
+                    target_xp
+                )
+                zipped_actions = list(zip(skill_data['actions'], result['resultActions']))
+        except ValueError:
+            result = {"error": "You need to write numbers!"}
+
+    return render_template("skill.html", skill=skill_data, skill_key=skill_name, result=result, zipped=zipped_actions)
 
 if __name__ == "__main__":
     app.run(debug=True)
