@@ -49,7 +49,7 @@
                                 style="background-color: {{ 'red' if action.level > result.current_level else 'green' }};">
                                 {{ action.level }}
                             </span> 
-                            <img src="{{ url_for('static', filename='icons/' + action.image) }}" style="width: 50px;">
+                            <img src="{{ url_for('static', filename='css/icons/' + action.image) }}" style="width: 50px;">
                             <span>{{ action.action }}</span>
                             <span>{{ action.exp }}</span>
                             <span>{{ count }}</span>
@@ -65,3 +65,4 @@
 </body>
 
 </html>
+
