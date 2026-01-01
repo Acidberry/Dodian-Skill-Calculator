@@ -176,7 +176,7 @@ SKILLS = {
         "enabled": True,
         "icon": "Firemaking_icon.png",
          "actions": [
-    {"level": 1, "action": "Logs", "exp": 160,"image""log.png"},
+    {"level": 1, "action": "Logs", "exp": 160,"image":"log.png"},
     {"level": 15, "action": "Oak logs", "exp": 240,"image":"oak.png"},
     {"level": 30, "action": "Willow logs", "exp": 360,"image":"willow.png"},
     {"level": 45, "action": "Maple logs", "exp": 540,"image":"maple.png"},
@@ -241,6 +241,7 @@ SKILLS = {
         "icon": "Farming_icon.png",
     }
 }
+
 
 
 
