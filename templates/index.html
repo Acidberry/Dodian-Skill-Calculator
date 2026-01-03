@@ -1,16 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Dodian Calculator</title>
+    <title>OSRS Calculator</title>
     <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
 </head>
 <body>
     <div class="window-container">
-        <div class="header-bar">Dodian Skill Calculator</div>
+        <div class="header-bar">OSRS Skill Calculator</div>
         <div class="skills-grid">
             {% for key, skill in skills.items() %}
                 <a href="/skill/{{ key }}" class="skill-button {{ 'disabled' if not skill.enabled }}">
-                    <img src="{{ url_for('static', filename='css/icons/' + skill.icon) }}">
+                    <img src="{{ url_for('static', filename='icons/' + skill.icon) }}">
                     <span>{{ skill.name }}</span>
                 </a>
             {% endfor %}
@@ -19,9 +19,6 @@
     </div>
 </body>
 </html>
-
-
-
 
 
 

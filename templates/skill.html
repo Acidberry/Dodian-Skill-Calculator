@@ -6,14 +6,15 @@
 </head>
 <body>
     <div class="window-container">
-        <div class="header-bar">{{ skill.name }}</div>
+        <div class="header-bar">{{ skill.name }}{{' (Altar)' if skill.name=='Prayer' else ''}}</div>
         <div style="text-align: center; padding: 20px;">
-            <form method="post" id="calcForm">
+            <form method="post" id="calcForm" class="calc-form">
                 <input type="text" name="current_level" id="current_level" placeholder="Current Level" value="{{ result.current_level }}">
                 <input type="text" name="target_level" id="target_level" placeholder="Target Level" value="{{ result.target_level }}">
                 <input type="text" name="current_xp" id="current_xp" placeholder="Current XP" value="{{ result.current_xp }}">
                 <input type="text" name="target_xp" id="target_xp" placeholder="Target XP" value="{{ result.target_xp }}">
             
+				<input type="{{ 'text' if skill.name=='Prayer' else 'hidden' }}" id="fr_lvl" name="fr_lvl" placeholder="Firemaking Level" value="{{ result.fr_lvl }}">
                 <input type="hidden" name="active_pair" id="active_pair" value="">
             
                 <button type="submit">Calculate</button>
@@ -34,6 +35,13 @@
                         activePairField.value = '2'; // XP pair
                     });
                 });
+				
+				const input = document.getElementById('fr_lvl');
+				if (input) {
+					input.addEventListener('input', () => {
+						activePairField.value = '1'; // XP pair
+					});
+				}
             </script>
 
             {% if result %}
@@ -43,16 +51,24 @@
                 </div>
                 {% else %}
                 <div class="actions-table">
-                    {% for action, count in zipped %}
+					<div class="action-row">
+                            <span>Level</span>
+                            <span>Action</span>
+                            <span>Exp</span>
+                            <span>Number</span>
+                        </div>
+                    {% for action, count, newXp in zipped %}
                         <div class="action-row">
                             <span
                                 style="background-color: {{ 'red' if action.level > result.current_level else 'green' }};">
                                 {{ action.level }}
-                            </span> 
-                            <img src="{{ url_for('static', filename='css/icons/' + action.image) }}" style="width: 50px;">
+                            </span>
+							<div class="action-row2">
+                            <img src="{{ url_for('static', filename='icons/' + action.image) }}" style="width: 50px;">
                             <span>{{ action.action }}</span>
-                            <span>{{ action.exp }}</span>
-                            <span>{{ count }}</span>
+                            </div>
+							<span>Exp:{{ newXp }}</span>
+                            <span>Number:{{ count }}</span>
                         </div>
                     {% endfor %}
                 </div>
@@ -65,4 +81,3 @@
 </body>
 
 </html>
-
