@@ -37,7 +37,7 @@ def xp_to_level(xp: int) -> int:
 
 
 def calculate(active_pair, skill_data, current_level=None, current_xp=None,
-              target_level=None, target_xp=None):
+              target_level=None, target_xp=None, fr_lvl=None):
 
     if active_pair == '1':
         current_xp = level_to_xp(current_level)
@@ -45,18 +45,34 @@ def calculate(active_pair, skill_data, current_level=None, current_xp=None,
     elif active_pair == '2':
         current_level = xp_to_level(current_xp)
         target_level = xp_to_level(target_xp)
+    
+    if skill_data['name'] == 'Prayer':
+        xp_needed = target_xp - current_xp
+        resultActions = []
+        NewXpDict = []
+        for action in skill_data['actions']:
+            NewXp = int((2 + (int(fr_lvl) + 1) /100) * int(action['exp']))
+            number = xp_needed / NewXp
+            resultActions.append(math.ceil(number))
+            NewXpDict.append(NewXp)
+    else:
+        xp_needed = target_xp - current_xp
+        resultActions = []
+        NewXpDict = []
+        for action in skill_data['actions']:
+            number = xp_needed / action['exp']
+            resultActions.append(math.ceil(number))
+            NewXpDict.append(action['exp'])
 
-    xp_needed = target_xp - current_xp
-
-    resultActions = []
-    for action in skill_data['actions']:
-        number = xp_needed / action['exp']
-        resultActions.append(math.ceil(number))
+    if fr_lvl == None:
+        fr_lvl = 1
 
     return {
         "current_xp": current_xp,
         "target_xp": target_xp,
         "current_level": current_level,
         "target_level": target_level,
-        "resultActions": resultActions
+        "resultActions": resultActions,
+        "NewXpDict": NewXpDict,
+        "fr_lvl": fr_lvl
     }

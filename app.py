@@ -22,11 +22,13 @@ def skill_detail(skill_name):
             current_xp = request.form.get("current_xp", "")
             target_xp = request.form.get("target_xp", "")
             active_pair = request.form.get("active_pair")
+            fr_lvl = request.form.get("fr_lvl")
 
             if active_pair == '1':
                 current_level = int(current_level)
                 target_level = int(target_level)
-
+                if skill_name == 'Prayer':
+                    fr_lvl = int(fr_lvl)
                 # do calculations here
                 result = logic.calculate(
                     active_pair,
@@ -34,12 +36,15 @@ def skill_detail(skill_name):
                     current_level,
                     current_xp,
                     target_level,
-                    target_xp
+                    target_xp,
+                    fr_lvl
                 )
-                zipped_actions = list(zip(skill_data['actions'], result['resultActions']))
+                zipped_actions = list(zip(skill_data['actions'], result['resultActions'], result['NewXpDict']))
             elif active_pair == '2':
                 current_xp = int(current_xp)
                 target_xp = int(target_xp)
+                if skill_name == 'Prayer':
+                    fr_lvl = int(fr_lvl)
                 # do calculations here
                 result = logic.calculate(
                     active_pair,
@@ -47,9 +52,10 @@ def skill_detail(skill_name):
                     current_level,
                     current_xp,
                     target_level,
-                    target_xp
+                    target_xp,
+                    fr_lvl
                 )
-                zipped_actions = list(zip(skill_data['actions'], result['resultActions']))
+                zipped_actions = list(zip(skill_data['actions'], result['resultActions'], result['NewXpDict']))
         except ValueError:
             result = {"error": "You need to write numbers!"}
 
