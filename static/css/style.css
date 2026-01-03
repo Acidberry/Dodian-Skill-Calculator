@@ -9,7 +9,7 @@ body {
 .window-container {
     background-color: #4a4031;
     border: 3px double #211c14;
-    width: 450px;
+    width: 800px;
 }
 
 .header-bar {
@@ -85,11 +85,20 @@ body {
 
 .action-row {
     display: grid;
-    grid-template-columns: 50px 60px 1fr 60px 60px;
+    grid-template-columns: 100px 150px 1fr 150px;
     align-items: center;
     gap: 10px;
     padding: 5px 0;
     border-bottom: 1px solid #555;
+    /* optional row separator */
+}
+
+.action-row2 {
+    display: grid;
+    grid-template-columns: 50px 50px;
+    align-items: center;
+    gap: 10px;
+    padding: 5px 0;
     /* optional row separator */
 }
 
